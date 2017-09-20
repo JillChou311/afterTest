@@ -1,4 +1,5 @@
 #coding=utf-8
+import time
 from element import BasePageElement
 from locators import *
 from time import sleep

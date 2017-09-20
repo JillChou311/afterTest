@@ -35,14 +35,14 @@ class LiteNet_test(unittest.TestCase):
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
         self.driver.implicitly_wait(30)
 
-    def test_0_register(self): 
+    def test_0_register(self):
         welcome_page = page.WelcomePage(self.driver)
         welcome_page.click_x_button()
 
         login_page = page.LoginPage(self.driver)
         login_page.swipe_to_botton()
         login_page.click_regist_button()
-    
+
         register_page = page.RegisterPage(self.driver)
 
         #account test case : 234/ 1@gmail.com / 23@gmail.com
@@ -65,10 +65,10 @@ class LiteNet_test(unittest.TestCase):
         assert register_page.check_error_message(u'密碼與確認密碼不同'),'error message error.'
 
 
-    def test_1_login(self): 
+    def test_1_login(self):
         welcome_page = page.WelcomePage(self.driver)
-        welcome_page.click_x_button() 
-        
+        welcome_page.click_x_button()
+
         login_page = page.LoginPage(self.driver)
         login_page.send_account_info('litnet@gmail.com', '12345678')
 
@@ -77,13 +77,13 @@ class LiteNet_test(unittest.TestCase):
 
         setting_page = page.SettingPage(self.driver)
         assert setting_page.check_login_name(u'litnet@gmail.com'), 'login fail'
-        
+
 
 
     def test_2_region(self):
         welcome_page = page.WelcomePage(self.driver)
         welcome_page.click_x_button()
-        
+
         login_page = page.LoginPage(self.driver)
         login_page.send_account_info('litnet@gmail.com', '12345678')
         security_page = page.SecurityPage(self.driver)
@@ -92,21 +92,21 @@ class LiteNet_test(unittest.TestCase):
         bottom_banner = page.BottomBanner(self.driver)
         bottom_banner.click_bottom_button('區域')
         region_page = page.RegionPage(self.driver)
-        region_page.add_new_region('AutoTest')        
+        region_page.add_new_region('AutoTest')
         assert region_page.check_out_region('AutoTest'), "Add region fail."
 
         #edit region test
         region_page.edit_region('AutoTest','AutoTest01')
         assert region_page.check_out_region('AutoTest01'), "Edit region fail."
-        
+
         #delete region test
         region_page.delete_region('AutoTest01')
         theResult = False
         if region_page.check_out_region('AutoTest01') == False:
-            theResult = True            
+            theResult = True
         assert theResult,"delete region fail."
 
-        
+
 
     def test_4_repeat_binding(self):
         welcome_page = page.WelcomePage(self.driver)
@@ -121,7 +121,7 @@ class LiteNet_test(unittest.TestCase):
         binding_page = page.BindingPage(self.driver)
         bottom_banner = page.BottomBanner(self.driver)
         setting_page = page.SettingPage(self.driver)
-        
+
         security_page = page.SecurityPage(self.driver)
         if security_page.check_security_logo_appear() == False:
             binding_page.send_binding_info('906e','59725388','f835ddf7906e')
@@ -129,7 +129,7 @@ class LiteNet_test(unittest.TestCase):
             assert security_page.check_security_logo_appear(),'security logo not appear.'
 
         testTimes = 3 # repeat times is here
-        while testTimes > 0: 
+        while testTimes > 0:
             bottom_banner.click_bottom_button('設定')
             setting_page.unbinding_device()
             login_page.click_send_button()
@@ -179,8 +179,8 @@ class LiteNet_test(unittest.TestCase):
 
     def test_5_logout(self):
         welcome_page = page.WelcomePage(self.driver)
-        welcome_page.click_x_button() 
-        
+        welcome_page.click_x_button()
+
         login_page = page.LoginPage(self.driver)
         login_page.send_account_info('litnet@gmail.com', '12345678')
 
@@ -188,13 +188,13 @@ class LiteNet_test(unittest.TestCase):
         bottom_banner.click_bottom_button('設定')
 
         setting_page = page.SettingPage(self.driver)
-        
+
         assert setting_page.check_login_name(u'litnet@gmail.com'), 'login fail'
 
         setting_page.logout()
         assert login_page.check_Litenet_logo(),'logout fail.'
-        
- 
+
+
 
 
 
