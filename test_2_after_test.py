@@ -47,7 +47,7 @@ class LiteNet_test(unittest.TestCase):
 
         #account test case : 234/ 1@gmail.com / 23@gmail.com
         register_page.send_account('234')
-        assert register_page.check_error_message(u'帳號格式錯誤'),'error message error.'
+        assert register_page.check_error_message(u'信箱格式錯誤'),'error message error.'
         register_page.send_account('1@gmail.com')
         assert register_page.check_error_message(u'該信箱已註冊, 輸入密碼直接登入'),'message error.'
         register_page.send_account('23@gmail.com')
@@ -140,7 +140,7 @@ class LiteNet_test(unittest.TestCase):
 
             testTimes = testTimes-1
 
-    def test_3_scene(self): 
+    def test_3_scene(self):
         welcome_page = page.WelcomePage(self.driver)
         welcome_page.click_x_button()
 
@@ -158,10 +158,10 @@ class LiteNet_test(unittest.TestCase):
         bottom_banner.click_bottom_button('設定')
         bottom_banner.click_bottom_button('情境')
         assert scene_page.check_out_scene('AutoTest'), "Add scene fail."
-       
 
-        
-        scene_page.edit_scene("AutoTest",'AutoTest01')       
+
+
+        scene_page.edit_scene("AutoTest",'AutoTest01')
         bottom_banner.click_bottom_button('設定')
         bottom_banner.click_bottom_button('情境')
         assert scene_page.check_out_scene('AutoTest01'), "Edit scene fail."
@@ -170,11 +170,11 @@ class LiteNet_test(unittest.TestCase):
         #delete region test
         theResult = False
         if scene_page.check_out_scene('AutoTest01') == False:
-            theResult = True            
+            theResult = True
         assert theResult,"delete region fail."
 
-            
- 
+
+
 
 
     def test_5_logout(self):
