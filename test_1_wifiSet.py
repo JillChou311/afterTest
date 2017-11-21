@@ -50,8 +50,8 @@ class wifi_test(unittest.TestCase):
         
         desired_caps={
           'platformName': 'Android',
-          'platformVersion': '5.0',
-          'deviceName': 'E9AZCY15Z724',
+          'platformVersion': '4.4.2',
+          'deviceName': 'EAAZCY17E701',
           'appPackage': 'com.android.settings',
           'appActivity': 'Settings'
         }

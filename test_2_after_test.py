@@ -17,7 +17,7 @@ class LiteNet_test(unittest.TestCase):
     """A sample test class to show how page object works"""
 
     def setUp(self):
-        sleep(30)
+        # sleep(30)
         files = [f for f in os.listdir('.') if os.path.isfile(f)]
         for f in files:
             if f[0:17]=='app-Litenet-debug':
@@ -29,9 +29,12 @@ class LiteNet_test(unittest.TestCase):
         desired_caps['appPackage'] = 'com.gemteks.litenet'
         desired_caps['appActivity'] = 'com.joymaster.mycasa.activity.MainActivity'
         desired_caps['platformName'] = 'Android'
-        desired_caps['platformVersion'] = '5.0'
-        desired_caps['deviceName'] = 'E9AZCY15Z724'
-        desired_caps['udid'] = 'E9AZCY15Z724'
+        # desired_caps['platformVersion'] = '5.0'
+        # desired_caps['deviceName'] = 'E9AZCY15Z724'
+        # desired_caps['udid'] = 'E9AZCY15Z724'
+        desired_caps['platformVersion'] = '4.4.2'
+        desired_caps['deviceName'] = 'EAAZCY17E701'
+        desired_caps['udid'] = 'EAAZCY17E701'
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
         self.driver.implicitly_wait(30)
 
