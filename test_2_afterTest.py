@@ -79,7 +79,7 @@ class LiteNet_test(unittest.TestCase):
                 sleep(2)
                 break
 
-        self._ScanSSID("MyVITA_A79F", 'android:id/title', 1000, 200)
+        self._ScanSSID("MyVITA_906E", 'android:id/title', 1000, 200)
 
         elem = self.driver.find_elements_by_class_name("android.widget.Button")
         for e in elem:
