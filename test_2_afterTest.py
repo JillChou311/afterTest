@@ -79,7 +79,7 @@ class LiteNet_test(unittest.TestCase):
                 sleep(2)
                 break
 
-        self._ScanSSID("MyVITA_906E", 'android:id/title', 1000, 200)
+        self._ScanSSID("MyVITA_A79F", 'android:id/title', 1000, 200)
 
         elem = self.driver.find_elements_by_class_name("android.widget.Button")
         for e in elem:
@@ -88,6 +88,7 @@ class LiteNet_test(unittest.TestCase):
                 break
             elif e.text == u'連線':
                 e.click()
+                sleep(10)
                 break
 
 
@@ -180,7 +181,7 @@ class LiteNet_test(unittest.TestCase):
 
         security_page = page.SecurityPage(self.driver)
         if security_page.check_security_logo_appear() == False:
-            binding_page.send_binding_info('906e','59725388','f835ddf7906e')
+            binding_page.send_binding_info('a79f','72067944','f835ddf7a79f')
             binding_page.click_send_button()
             assert security_page.check_security_logo_appear(),'security logo not appear.'
 
@@ -190,7 +191,7 @@ class LiteNet_test(unittest.TestCase):
             setting_page.unbinding_device()
             login_page.click_send_button()
 
-            binding_page.send_binding_info('906e','59725388','f835ddf7906e')
+            binding_page.send_binding_info('a79f','72067944','f835ddf7a79f')
             binding_page.click_send_button()
             assert security_page.check_security_logo_appear(),'security logo not appear.'
 

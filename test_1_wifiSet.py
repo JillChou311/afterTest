@@ -46,7 +46,7 @@ class wifi_test(unittest.TestCase):
     #initialize
 
     def setUp(self):
-        sleep(50)
+       # sleep(50)
         
         desired_caps={
           'platformName': 'Android',
@@ -66,19 +66,14 @@ class wifi_test(unittest.TestCase):
     
     #Test script
     def test_1_wifiSet(self):
-        elem = self.driver.find_elements_by_id("com.android.settings:id/title")
+        elem = self.driver.find_elements_by_id("android:id/title")
         for e in elem:
-            try:
-                aaa = e.text.encode("GBK", 'ignore')
-            except Exception, c:
-                print c
-            m = re.match(r'Wi', aaa)
-            if m:
+            if e.text == u"Wi‑Fi":
                 e.click()
                 sleep(2)
                 break
             
-        self._ScanSSID("MyVITA_906E",'android:id/title',1000,200)
+        self._ScanSSID("MyVITA_A79F",'android:id/title',1000,200)
 
         elem = self.driver.find_elements_by_class_name("android.widget.Button")
         for e in elem:
